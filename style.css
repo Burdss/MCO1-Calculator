@@ -1,0 +1,243 @@
+
+/* =========================================
+   1. GENERAL PAGE SETTINGS
+   ========================================= */
+
+/* Applies consistent sizing to all elements. */
+* {
+    box-sizing: border-box; /* Includes padding and borders in element sizing. */
+}
+
+/* Sets the default page appearance. */
+html,
+body {
+    width: 100%; /* Uses the full available width. */
+    min-height: 100%; /* Allows the page to fill the screen height. */
+    margin: 0; /* Removes the default page margin. */
+    font-family: Arial, sans-serif; /* Sets the text font. */
+    color: white; /* Makes the default text white. */
+    background: #171717; /* Sets the background outside the phone. */
+}
+
+/* Centers the calculator on the screen. */
+body {
+    display: flex; /* Enables flexible positioning. */
+    justify-content: center; /* Centers the phone horizontally. */
+    align-items: center; /* Centers the phone vertically. */
+    min-height: 100vh; /* Uses the full viewport height. */
+    min-height: 100dvh; /* Supports modern screen sizing. */
+    padding: 12px; /* Adds space around the phone. */
+}
+
+
+/* =========================================
+   2. CELLPHONE BODY DESIGN
+   ========================================= */
+
+/* Creates the main cellphone frame. */
+.calculator {
+    position: relative; /* Allows the speaker and camera to be positioned. */
+    display: flex; /* Arranges the display and buttons. */
+    flex-direction: column; /* Places the display above the buttons. */
+    width: 100%; /* Allows the phone to fit smaller screens. */
+    max-width: 370px; /* Sets the maximum phone width. */
+    height: min(800px, calc(100dvh - 24px)); /* Keeps the phone within the screen. */
+    min-height: 500px; /* Provides room for the calculator controls. */
+    padding: 38px 18px 22px; /* Adds space inside the phone frame. */
+    overflow: hidden; /* Keeps contents inside the rounded frame. */
+    background: #050505; /* Sets the phone interior to black. */
+    border: 3px solid #454545; /* Creates the phone border. */
+    border-radius: 42px; /* Rounds the phone corners. */
+    box-shadow:
+        0 0 0 2px #111111, /* Adds a darker outline. */
+        0 18px 40px rgba(0, 0, 0, 0.55); /* Adds a shadow behind the phone. */
+}
+
+/* Adds the speaker at the top of the phone. */
+.calculator::before {
+    content: ""; /* Creates the speaker detail. */
+    position: absolute; /* Positions the speaker independently. */
+    top: 15px; /* Sets the distance from the top. */
+    left: 50%; /* Moves the speaker toward the center. */
+    width: 58px; /* Sets the speaker width. */
+    height: 5px; /* Sets the speaker thickness. */
+    transform: translateX(-50%); /* Centers the speaker horizontally. */
+    background: #555555; /* Gives the speaker a gray color. */
+    border-radius: 10px; /* Rounds the speaker ends. */
+}
+
+/* Adds the small camera beside the speaker. */
+.calculator::after {
+    content: ""; /* Creates the camera detail. */
+    position: absolute; /* Positions the camera independently. */
+    top: 12px; /* Sets the distance from the top. */
+    left: calc(50% + 38px); /* Places the camera to the right of the speaker. */
+    width: 10px; /* Sets the camera width. */
+    height: 10px; /* Sets the camera height. */
+    background: #222222; /* Gives the camera a dark appearance. */
+    border: 2px solid #555555; /* Adds a border around the camera. */
+    border-radius: 50%; /* Makes the camera circular. */
+}
+
+
+/* =========================================
+   3. CALCULATOR DISPLAY
+   ========================================= */
+
+/* Arranges the expression and result on the screen. */
+.display {
+    display: flex; /* Enables flexible positioning. */
+    flex: 1 1 0; /* Allows the display to use available space. */
+    flex-direction: column; /* Places the expression above the result. */
+    justify-content: flex-end; /* Aligns the text toward the bottom. */
+    min-height: 0; /* Allows the display to shrink when needed. */
+    width: 100%; /* Uses the full available width. */
+    padding: 20px 4px 24px; /* Adds space around the displayed numbers. */
+    overflow: hidden; /* Prevents text from overflowing the display. */
+    text-align: right; /* Aligns numbers to the right. */
+}
+
+/* Styles the calculation expression. */
+#expression {
+    min-height: 0; /* Allows the expression area to shrink. */
+    color: #929292; /* Makes the expression gray. */
+    font-size: 19px; /* Sets the expression text size. */
+    overflow-wrap: anywhere; /* Wraps long expressions when needed. */
+}
+
+/* Styles the main result number. */
+#result {
+    margin-top: 10px; /* Adds space above the result. */
+    color: white; /* Makes the result white. */
+    font-size: clamp(38px, 10vw, 62px); /* Adjusts the text size to the screen. */
+    font-weight: 300; /* Makes the result text thinner. */
+    line-height: 1.15; /* Controls the result line spacing. */
+    letter-spacing: -1px; /* Slightly reduces space between characters. */
+    overflow-wrap: anywhere; /* Prevents long numbers from overflowing. */
+}
+
+
+/* =========================================
+   4. BASIC BUTTON LAYOUT
+   ========================================= */
+
+/* Creates four columns and five rows for the basic calculator. */
+.buttons {
+    display: grid; /* Uses a grid to arrange the buttons. */
+    flex: 0 0 62%; /* Reserves space for the button area. */
+    grid-template-columns: repeat(4, minmax(0, 1fr)); /* Creates 4 equal columns. */
+    grid-template-rows: repeat(5, minmax(0, 1fr)); /* Creates 5 equal rows. */
+    gap: 10px; /* Adds space between the buttons. */
+    width: 100%; /* Uses the full available width. */
+    min-height: 0; /* Allows the grid to fit the phone. */
+}
+
+/* =========================================
+   RESERVED SCIENTIFIC LAYOUT
+   Uncomment this block when needed.
+   Comment out the basic .buttons block first.
+   ========================================= */
+
+/*
+.buttons {
+    display: grid; 
+    flex: 0 0 62%;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(6, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
+    min-height: 0;
+}
+*/
+
+
+/* =========================================
+   5. BUTTON DESIGN
+   ========================================= */
+
+/* Sets the common appearance of all calculator buttons. */
+.buttons button {
+    display: flex; /* Enables centering of the button text. */
+    justify-content: center; /* Centers text horizontally. */
+    align-items: center; /* Centers text vertically. */
+    width: 100%; /* Fills the grid cell width. */
+    height: 100%; /* Fills the grid cell height. */
+    min-width: 0; /* Allows buttons to shrink. */
+    min-height: 0; /* Allows buttons to shrink. */
+    padding: 0; /* Removes default button padding. */
+    border: none; /* Removes button borders. */
+    border-radius: 50%; /* Makes the buttons circular. */
+    aspect-ratio: 1 / 1; /* Keeps buttons square when possible. */
+    background: #292929; /* Sets the button background to dark gray. */
+    color: white; /* Makes button text white. */
+    font-size: clamp(17px, 5vw, 28px); /* Adjusts text size to the screen. */
+    font-weight: 500; /* Makes the text slightly thicker. */
+    cursor: pointer; /* Shows a pointer when hovering. */
+    transition: background 0.15s, transform 0.1s; /* Animates hover and press effects. */
+}
+
+/* Lightens buttons when the pointer hovers over them. */
+.buttons button:hover {
+    background: #414141; /* Changes the button to a lighter gray. */
+}
+
+/* Shrinks buttons briefly when pressed. */
+.buttons button:active {
+    transform: scale(0.94); /* Creates a button-press effect. */
+}
+
+/* Styles the scientific buttons if enabled in the HTML. */
+.buttons button.scientific {
+    background: #292929; /* Matches the other calculator buttons. */
+    font-size: clamp(14px, 4vw, 22px); /* Keeps scientific labels readable. */
+}
+
+/* Highlights the equals button in orange. */
+.buttons button.equals {
+    background: #ff8c1a; /* Sets the equals button background to orange. */
+    color: white; /* Keeps the equals text white. */
+}
+
+/* Lightens the equals button when hovered. */
+.buttons button.equals:hover {
+    background: #ff9f36; /* Changes the orange to a lighter shade. */
+}
+
+
+/* =========================================
+   6. SHORT SCREEN ADJUSTMENTS
+   ========================================= */
+
+/* Adjusts the calculator for shorter screens. */
+@media (max-height: 650px) {
+    .calculator {
+        height: calc(100dvh - 16px); /* Reduces the phone height to fit. */
+        min-height: 0; /* Removes the normal minimum height. */
+        padding: 32px 14px 14px; /* Reduces the internal spacing. */
+    }
+
+    .display {
+        padding: 15px 4px 18px; /* Reduces the display spacing. */
+    }
+
+    .buttons {
+        flex-basis: 65%; /* Gives more space to the buttons. */
+        gap: 6px; /* Reduces the gaps between buttons. */
+    }
+
+    .buttons button {
+        font-size: clamp(15px, 4vw, 22px); /* Reduces button text size. */
+    }
+}
+
+
+/* =========================================
+   7. WIDER SCREEN ADJUSTMENTS
+   ========================================= */
+
+/* Keeps the phone at a comfortable size on wider screens. */
+@media (min-width: 600px) {
+    .calculator {
+        width: 370px; /* Sets the phone width on wider screens. */
+    }
+}
