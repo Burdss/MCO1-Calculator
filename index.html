@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Sets the character encoding. -->
+    <meta charset="UTF-8">
+
+    <!-- Adjusts the page to the screen size. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Sets the page title. -->
+    <title>Simple Calculator</title>
+
+    <!-- Connects the CSS file. -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Main cellphone-style calculator. -->
+    <main class="calculator">
+
+        <!-- Calculator display. -->
+        <section class="display">
+            <!-- Shows the previous calculation. -->
+            <div id="expression"></div>
+
+            <!-- Shows the current number or result. -->
+            <div id="result">0</div>
+        </section>
+
+        <!-- Calculator buttons. -->
+        <section class="buttons">
+
+            <!-- RESERVED SCIENTIFIC BUTTONS.
+                 Uncomment all four lines if Sir asks.
+                 The empty slot keeps the first row aligned. -->
+
+           <!--
+                 <button data-action="sin" class="scientific">sin</button>
+            <button data-action="cos" class="scientific">cos</button>
+            <button data-action="tan" class="scientific">tan</button>
+            <span class="empty-slot" aria-hidden="true"></span> --> 
+            
+
+            <!-- Calculator controls. -->
+            <button data-action="clear">AC</button>
+            <button data-action="percent">%</button>
+            <button data-action="backspace" aria-label="Delete">⌫</button>
+            <button data-operator="/" class="operator">÷</button>
+
+            <!-- Number row. -->
+            <button data-number="7">7</button>
+            <button data-number="8">8</button>
+            <button data-number="9">9</button>
+            <button data-operator="*" class="operator">×</button>
+
+            <!-- Number row. -->
+            <button data-number="4">4</button>
+            <button data-number="5">5</button>
+            <button data-number="6">6</button>
+            <button data-operator="-" class="operator">−</button>
+
+            <!-- Number row. -->
+            <button data-number="1">1</button>
+            <button data-number="2">2</button>
+            <button data-number="3">3</button>
+            <button data-operator="+" class="operator">+</button>
+
+            <!-- Final row. -->
+            <button data-number="00">00</button>
+            <button data-number="0">0</button>
+            <button data-action="decimal">.</button>
+            <button data-action="equals" class="equals">=</button>
+
+        </section>
+    </main>
+
+    <!-- Connects the JavaScript functionality. -->
+    <script src="script.js"></script>
+</body>
+</html>
